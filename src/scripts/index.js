@@ -1,7 +1,7 @@
-import { fetchUser } from "/src/scripts/services/user.js";
-import { fetchUserRepos } from "/src/scripts/services/repositories.js";
-import { user } from "/src/scripts/objects/user.js";
-import { screen } from "/src/scripts/objects/screen.js";
+import { fetchUser } from "./services/user.js";
+import { fetchUserRepos } from "./services/repositories.js";
+import { user } from "./objects/user.js";
+import { screen } from "./objects/screen.js";
 
 document.getElementById('btn-search').addEventListener('click', () => {
     const userName = document.getElementById('input-search').value;
