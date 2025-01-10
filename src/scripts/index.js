@@ -1,5 +1,6 @@
 import { fetchUser } from "./services/user.js";
 import { fetchUserRepos } from "./services/repositories.js";
+import { fetchUserEvents } from "./services/events.js";
 import { user } from "./objects/user.js";
 import { screen } from "./objects/screen.js";
 
@@ -33,15 +34,17 @@ async function getUserData(userName) {
     const userResponse = await fetchUser(userName);
     if (userResponse.message === "Not Found") {
         screen.renderNotFound();
-        return
+        return;
     }
 
     const reposResponse = await fetchUserRepos(userName);
+    const eventsResponse = await fetchUserEvents(userName);
 
     user.setInfo(userResponse);
     user.setRepositories(reposResponse);
-    console.log(user);
+    user.setEvents(eventsResponse);
 
-
+    console.log(reposResponse);
+    
     screen.renderUser(user);
 }
